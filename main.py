@@ -1,10 +1,10 @@
 import PIL.Image
 
 
-dec = int(input("1 for contrast and 2 for a gradiant: "))
-if dec == 1:
+dec = input("1 for contrast and 2 for a gradiant: ")
+if dec == "1":
     ASCII_CHARS = ["@", "#", "S", "%", "?", "*", "+", ";", ":", ",", "."]
-elif dec == 2:
+elif dec == "2":
     ASCII_CHARS = ["Ñ","@","#","W","$","9","8","7","6","5","4","3","2","1","0","?","!","a","b","c",";",";","+",",",".","_"]    
 else:
     print("Invalid input... random value will be used")
@@ -38,6 +38,8 @@ def main(new_width=100):
     new_image_data = pixels_to_ascii(grayify(resize(image)))    
     pixel_count = len(new_image_data)
     ascii_image = "\n".join(new_image_data[i:(i+new_width)] for i in range(0, pixel_count, new_width))
+    with open("ascii_image.txt", "w") as f:
+        f.write(ascii_image)
 
     print(ascii_image)
     
